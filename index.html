@@ -7,25 +7,32 @@
     <title>My custom Bulma website</title>
     <link rel="stylesheet" href="css/mystyles.css">
   </head>
+
   <body>
-     <h1 class="title">
-        The Dinner Guru
-      </h1>
-
-      <p class="subtitle">
-        What's in your fridge or pantry?
-      </p>
-
-      <div class="dinner-search-box">
-        <div class="control">
-          <input class="input" type="text" placeholder="Your Ingredient">
-        </div>
+    <header class="header" id="header">
+      <h1 class="main-title">The Dinner Guru</h1>
+      <nav class="nav-btns" id="nav-btns">
+        <ul>
+          <li><a href="">Popular</a></li>
+          <li><a href="">My recipes</a></li>
+        </ul>
+      </nav>
+    </header>
+  
+    <form class="form-container" id="user-form">
+      <label for="ingredient-input">What's in your fridge or pantry?</label>
+      <br>
+      <input type="text" name="ingredient-input" id="ingredient-input" placeholder="Ingredients...">
+      <br>
+      <button type="submit" id="submit-btn">Get Cooking!</button>
+    </form>
+  
+    <main class="slideshow-container">
+      <div class="card slide">
+        
       </div>
-
-      <div class="buttons">
-        <a class="button is-primary">Let's Eat!</a>
-      </div>
+    </main>
+    <script src="./assets/js/script.js"></script>
   </body>
 </html>
-        
       
