@@ -1,3 +1,4 @@
+
 let userInputEl = document.querySelector("#user-form");
 let ingredientInputEl = document.querySelector("#ingredient");
 let recipeContainerEl = document.querySelector("#recipes-container");
