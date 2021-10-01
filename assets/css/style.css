@@ -1,5 +1,10 @@
 * {box-sizing:border-box}
 
+/* added by riley for hidding and unhiding blocks
+/* .hide {
+  display: none;
+} */
+
 /* Slideshow container */
 .slideshow-container {
   max-width: 1000px;
