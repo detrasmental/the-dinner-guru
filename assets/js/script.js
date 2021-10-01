@@ -1,28 +1,28 @@
-var slideIndex = 1;
-showSlides(slideIndex);
+let userInputEl = document.querySelector("#user-form");
+let ingredientInputEl = document.querySelector("#ingredient");
+let recipeContainerEl = document.querySelector("#recipes-container");
+let recipeBaseIngredient = document.querySelector("#recipe-base-ingredient");
 
-// Next/previous controls
-function plusSlides(n) {
-  showSlides(slideIndex += n);
-}
+let formSubmitHandler = function(event) {
+    event.preventDefault();
+    let ingredient = ingredientInputEl.value.trim();
 
-// Thumbnail image controls
-function currentSlide(n) {
-  showSlides(slideIndex = n);
-}
+    if (ingredient) {
+        getRecipes(ingredient);
+        ingredientInputEl.value = "";
+    } else {
+        alert("Please enter an ingredient!");
+    }
+};
 
-function showSlides(n) {
-  var i;
-  var slides = document.getElementsByClassName("mySlides");
-  var dots = document.getElementsByClassName("dot");
-  if (n > slides.length) {slideIndex = 1}
-  if (n < 1) {slideIndex = slides.length}
-  for (i = 0; i < slides.length; i++) {
-      slides[i].style.display = "none";
-  }
-  for (i = 0; i < dots.length; i++) {
-      dots[i].className = dots[i].className.replace(" active", "");
-  }
-  slides[slideIndex-1].style.display = "block";
-  dots[slideIndex-1].className += " active";
-}
+let getRecipes = function(ingredient) {
+    let apiUrl = "https://api.edamam.com/api/recipes/v2?type=public&q=" + ingredient + "&app_id=601299ac&app_key=dbffb2825d4c8e890654357d700825bf";
+
+    fetch(apiUrl).then(function(response) {
+        response.json().then(function(data) {
+            console.log(data, ingredient);
+        })
+    });
+};
+
+userInputEl.addEventListener("submit", formSubmitHandler);
