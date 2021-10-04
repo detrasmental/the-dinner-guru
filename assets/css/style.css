@@ -1,9 +1,8 @@
 * {box-sizing:border-box}
 
-/* added by riley for hidding and unhiding blocks
-/* .hide {
+.hide {
   display: none;
-} */
+}
 
 /* Slideshow container */
 .slideshow-container {
