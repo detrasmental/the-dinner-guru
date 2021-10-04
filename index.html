@@ -6,20 +6,23 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>My custom Bulma website</title>
+    <script src="https://kit.fontawesome.com/6deeddaa75.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="./assets/css/style.css">
   </head>
 
   <body>
+    <!-- header title with nav buttons-->
     <header class="header" id="header">
       <h1 class="main-title">The Dinner Guru</h1>
       <nav class="nav-btns" id="nav-btns">
-        <ul>
+        <ul class="nav-ul">
           <li><a href="">Popular</a></li>
           <li><a href="">My recipes</a></li>
         </ul>
       </nav>
     </header>
   
+    <!-- starting input container -->
     <form class="form-container" id="user-form">
       <label for="ingredient-input">What's in your fridge or pantry?</label>
       <br>
@@ -28,11 +31,57 @@
       <button type="submit" id="submit-btn">Get Cooking!</button>
     </form>
   
-    <main class="slideshow-container">
-      <div class="card slide">
-        
+    <!-- slideshow container-->
+    <main class="slideshow-container hide">
+      <div class="img-card" id="img-card">
+        <h2 class="card-title" id="card-title">#1 Nick Cage</h2>
+        <img id="slideshow-img" src="https://www.placecage.com/200/300" alt="Nick cage">
+      </div>
+      <div class="buttons">
+        <button class="previous-btn" id="previous-btn">Previous</button>
+        <button class="favorite-btn" id="favorite-btn">
+          <i class="far fa-heart"></i>
+        </button>
+        <button class="next-btn" id="next-btn">Next</button>
       </div>
     </main>
+
+    <!-- favorite recipes container -->
+    <main class="favorites-container hide">
+      <div class="recipes">
+        <ul class="recipes-list">
+          <li>Recipe Placeholder</li>
+          <li>Recipe Placeholder</li>
+          <li>Recipe Placeholder</li>
+          <li>Recipe Placeholder</li>
+          <li>Recipe Placeholder</li>
+          <li>Recipe Placeholder</li>
+          <li>Recipe Placeholder</li>
+          <li>Recipe Placeholder</li>
+          <li>Recipe Placeholder</li>
+          <li>Recipe Placeholder</li>
+        </ul>
+      </div>
+    </main>
+
+    <!-- popular recipes container -->
+    <main class="popular-container hide">
+      <div class="popular">
+        <ul class="popular-list">
+          <li>Popular placeholder</li>
+          <li>Popular placeholder</li>
+          <li>Popular placeholder</li>
+          <li>Popular placeholder</li>
+          <li>Popular placeholder</li>
+          <li>Popular placeholder</li>
+          <li>Popular placeholder</li>
+          <li>Popular placeholder</li>
+          <li>Popular placeholder</li>
+          <li>Popular placeholder</li>
+        </ul>
+      </div>
+    </main>
+
     <script src="./assets/js/script.js"></script>
   </body>
 </html>
