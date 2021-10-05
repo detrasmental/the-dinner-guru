@@ -15,7 +15,6 @@
       <h1 class="main-title">The Dinner Guru</h1>
       <nav class="nav-btns" id="nav-btns">
         <ul class="nav-ul">
-          <li><a href="">Popular</a></li>
           <li><a href="">My recipes</a></li>
         </ul>
       </nav>
@@ -26,7 +25,6 @@
       <label for="ingredient-input">What's in your fridge or pantry?</label>
       <br>
       <input type="text" name="ingredient-input" id="ingredient-input" placeholder="Ingredients...">
-      <br>
       <button type="submit" id="submit-btn">Get Cooking!</button>
     </form>
   
@@ -35,6 +33,11 @@
       <div class="img-card" id="img-card">
         <h2 class="card-title" id="card-title">#1 Nick Cage</h2>
         <img id="slideshow-img" src="https://www.placecage.com/200/300" alt="Nick cage">
+      </div>
+      <div class="info-container" id="info-container">
+        <p>Ingredients: Blah, Blah, Blah</p>
+        <p>Meal time: 60mins</p>
+        <p>Serves: 6</p>
       </div>
       <div class="buttons">
         <button class="previous-btn" id="previous-btn">Previous</button>
@@ -62,25 +65,6 @@
         </ul>
       </div>
     </main>
-
-    <!-- popular recipes container -->
-    <main class="popular-container hide">
-      <div class="popular">
-        <ul class="popular-list">
-          <li>Popular placeholder</li>
-          <li>Popular placeholder</li>
-          <li>Popular placeholder</li>
-          <li>Popular placeholder</li>
-          <li>Popular placeholder</li>
-          <li>Popular placeholder</li>
-          <li>Popular placeholder</li>
-          <li>Popular placeholder</li>
-          <li>Popular placeholder</li>
-          <li>Popular placeholder</li>
-        </ul>
-      </div>
-    </main>
-
     <script src="./assets/js/script.js"></script>
   </body>
 </html>
