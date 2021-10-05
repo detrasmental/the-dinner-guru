@@ -13,11 +13,24 @@ let formSubmitHandler = function(event) {
 
     if (ingredient) {
         slideIndex = 0;
-        getRecipes(ingredient);
+        getRecipesAlt(ingredient);
         ingredientInputEl.value = "";
     } else {
         alert("Please enter an ingredient!");
     }
+};
+
+let getRecipesAlt = function(ingredient) {
+    let apiUrl = "https://themealdb.com/api/json/v1/1/filter.php?i=" + ingredient;
+    
+    fetch(apiUrl).then(function(response) {
+        response.json().then(function(data) {
+            localStorage.setItem("workingArray", JSON.stringify(data));
+            localStorage.setItem("workingIngredient", ingredient);
+            console.log(data);
+            displayRecipeAlt(data, ingredient, slideIndex);
+        })
+    })
 };
 
 let getRecipes = function(ingredient) {
@@ -27,12 +40,21 @@ let getRecipes = function(ingredient) {
         response.json().then(function(data) {
             localStorage.setItem("workingArray", JSON.stringify(data));
             localStorage.setItem("workingIngredient", ingredient);
-            displayRecipe(data, ingredient, slideIndex);
+            displayRecipeAlt(data, ingredient, slideIndex);
         })
     });
 };
 
 userInputEl.addEventListener("submit", formSubmitHandler);
+
+let displayRecipeAlt = function(data, ingredient, i) {
+    let recipeName = data.meals[i].strMeal;
+    let recipeImage = data.meals[i].strMealThumb;
+    
+    recipeNameEl.textContent = recipeName;
+    recipeImageEl.src = recipeImage;
+    document.querySelector(".slideshow-container").classList.remove("hide");
+};
 
 let displayRecipe = function(data, ingredient, i) {
     let recipeName = data.hits[i].recipe.label;
@@ -40,6 +62,7 @@ let displayRecipe = function(data, ingredient, i) {
     
     recipeNameEl.textContent = recipeName;
     recipeImageEl.src = recipeImage;
+    document.querySelector(".slideshow-container").classList.remove("hide");
 };
 
 let nextSlide = function() {
