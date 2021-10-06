@@ -3,85 +3,89 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>My custom Bulma website</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Dinner Guru</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css">
     <script src="https://kit.fontawesome.com/6deeddaa75.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="./assets/css/style.css">
   </head>
-
   <body>
-    <!-- header title with nav buttons-->
-    <header class="header" id="header">
-      <h1 class="main-title">The Dinner Guru</h1>
-      <nav class="nav-btns" id="nav-btns">
-        <ul class="nav-ul">
-          <li><a href="">Popular</a></li>
-          <li><a href="">My recipes</a></li>
-        </ul>
+      <nav class="navbar has-shadow is-white">
+      <div class="navbar-brand">
+        <a class="navbar-item">
+          <img src="./images/logo2.JPG" alt="site logo" style="max-height: 70px" class="py-2 px-2">
+        </a>
+        <a class="navbar-burger" id="burger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </a>
+      </div>
+
+      <div class="navbar-menu" id="nav-links">
+        <div class="navbar-end">
+            <a class="navbar-item" id="my-recipes">My &#128151; Recipes</a>
+        </div>
+      </div>
       </nav>
-    </header>
-  
+   
+
+    
+      <body>
     <!-- starting input container -->
-    <form class="form-container" id="user-form">
-      <label for="ingredient-input">What's in your fridge or pantry?</label>
-      <br>
-      <input type="text" name="ingredient-input" id="ingredient-input" placeholder="Ingredients...">
-      <br>
-      <button type="submit" id="submit-btn">Get Cooking!</button>
+    <section>
+    <div class="form-container" id="user-form">
+      <h1 class="ingredient-input">Let's Eat</h1>
+      <form>
+        <input type="text" name="ingredient-input" id="ingredient-input" placeholder="    Search Ingredient...">
+        <button class="button is-primary is-outlined is-medium is-fullwidth" type="submit" id="submit-btn">Get Cooking!</button>
     </form>
   
+  
     <!-- slideshow container-->
-    <main class="slideshow-container hide">
+    <div class="slideshow-container hide">
       <div class="img-card" id="img-card">
-        <h2 class="card-title" id="card-title">#1 Nick Cage</h2>
-        <img id="slideshow-img" src="https://www.placecage.com/200/300" alt="Nick cage">
-      </div>
-      <div class="buttons">
-        <button class="previous-btn" id="previous-btn">Previous</button>
-        <button class="favorite-btn" id="favorite-btn">
-          <i class="far fa-heart"></i>
-        </button>
-        <button class="next-btn" id="next-btn">Next</button>
-      </div>
+        <img id="slideshow-img" src="https://www.placecage.com/200/300" style="width: 100%" alt="photo of recipe from original site">
+        <div class="flex-container">
+        <h1 class="card-title" id="card-title">This is a recipe</h1>
+        <a class="view-btn" href="#">View Recipe</a>
+       </div>
+       <p class="item-data">Calories: 120</p>
+       </div>
+        <!-- Next and previous buttons -->
+        <div class="button">
+          <button class="button is-info is-outlined is-normal  previous-btn" id="previous-btn">Previous</button>
+          <button class="button is-danger is-normal favorite-btn" id="favorite-btn">
+            <i class="far fa-heart"></i>
+          </button>
+          <button class="button is-success is-outlined is-normal next-btn" id="next-btn">Next</button>
+        </div>
+  
+
+
+       
     </main>
 
     <!-- favorite recipes container -->
     <main class="favorites-container hide">
       <div class="recipes">
         <ul class="recipes-list">
-          <li>Recipe Placeholder</li>
-          <li>Recipe Placeholder</li>
-          <li>Recipe Placeholder</li>
-          <li>Recipe Placeholder</li>
-          <li>Recipe Placeholder</li>
-          <li>Recipe Placeholder</li>
-          <li>Recipe Placeholder</li>
-          <li>Recipe Placeholder</li>
-          <li>Recipe Placeholder</li>
-          <li>Recipe Placeholder</li>
+          
         </ul>
       </div>
     </main>
 
-    <!-- popular recipes container -->
-    <main class="popular-container hide">
-      <div class="popular">
-        <ul class="popular-list">
-          <li>Popular placeholder</li>
-          <li>Popular placeholder</li>
-          <li>Popular placeholder</li>
-          <li>Popular placeholder</li>
-          <li>Popular placeholder</li>
-          <li>Popular placeholder</li>
-          <li>Popular placeholder</li>
-          <li>Popular placeholder</li>
-          <li>Popular placeholder</li>
-          <li>Popular placeholder</li>
-        </ul>
+    <footer class="footer">
+      <div class="content has-text-centered">
+        
+          <strong>&copy The Dinner Guru</strong> 
+        
       </div>
-    </main>
+    </footer>
 
+    <script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"></script>
     <script src="./assets/js/script.js"></script>
+  </section>
   </body>
 </html>
       
