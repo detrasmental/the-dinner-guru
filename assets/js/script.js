@@ -6,6 +6,7 @@ let recipeImageEl = document.getElementById("slideshow-img");
 let slideIndex = 0;
 let nextSlideEl = document.getElementById("next-btn");
 let backSlideEl = document.getElementById("previous-btn");
+let favoriteEl = document.getElementById("favorite-btn");
 
 // Takes in user search term
 let formSubmitHandler = function(event) {
@@ -108,3 +109,19 @@ let backSlide = function() {
 // User input for the slide display functions
 nextSlideEl.addEventListener("click", nextSlide);
 backSlideEl.addEventListener("click", backSlide);
+
+let addFavorite = function() {
+    if (localStorage.getItem("favoriteRecipes") === null) {
+        let favoriteRecipes = [];
+        favoriteRecipes[0] = recipeNameEl.textContent;
+        localStorage.setItem("favoriteRecipes", JSON.stringify(favoriteRecipes));
+    }
+    else {
+        let oldRecipes = JSON.parse(localStorage.getItem("favoriteRecipes"));
+        let newRecipe = recipeNameEl.textContent;
+        oldRecipes.push(newRecipe);
+        localStorage.setItem("favoriteRecipes", JSON.stringify(oldRecipes));
+    }
+};
+
+favoriteEl.addEventListener("click", addFavorite);
