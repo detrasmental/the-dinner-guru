@@ -9,7 +9,7 @@ let backSlideEl = document.getElementById("previous-btn");
 let favoriteEl = document.getElementById("favorite-btn");
 let myRecipesEl = document.getElementById("my-recipes");
 let recipeLinkEl = document.querySelector(".view-btn");
-let homepageEl = document.querySelector(".main-title");
+let homepageEl = document.querySelector(".navbar-item");
 
 // Takes in user search term
 let formSubmitHandler = function(event) {
