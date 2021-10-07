@@ -8,6 +8,8 @@ let nextSlideEl = document.getElementById("next-btn");
 let backSlideEl = document.getElementById("previous-btn");
 let favoriteEl = document.getElementById("favorite-btn");
 let myRecipesEl = document.getElementById("my-recipes");
+let recipeLinkEl = document.querySelector(".view-btn");
+let homepageEl = document.querySelector(".main-title");
 
 // Takes in user search term
 let formSubmitHandler = function(event) {
@@ -41,9 +43,12 @@ let getRecipes = function(ingredient) {
 let displayRecipe = function(data, ingredient, i) {
     let recipeName = data.hits[i].recipe.label;
     let recipeImage = data.hits[i].recipe.image;
-    
+    let recipeLink = data.hits[i].recipe.url;
+
     recipeNameEl.textContent = recipeName;
     recipeImageEl.src = recipeImage;
+    recipeLinkEl.setAttribute("href", recipeLink);
+    recipeLinkEl.setAttribute("target", "_blank");
     document.querySelector(".slideshow-container").classList.remove("hide");
 };
 
@@ -64,10 +69,17 @@ let getRecipesAlt = function(ingredient) {
 
 // displays our second api results in a continuous loop with our first api results
 let displayRecipeAlt = function(data, ingredient, i) {
+
     if (i >= 0 && i < data.meals.length) {
+        let mealDBDetails = "https://themealdb.com/api/json/v1/1/lookup.php?i=" + data.meals[i].idMeal;
         let recipeName = data.meals[i].strMeal;
         let recipeImage = data.meals[i].strMealThumb;
-    
+// Performs an additional request from themealdb to load the recipe's source url
+        fetch(mealDBDetails).then(function(response) {
+            response.json().then(function(recipe) {
+                recipeLinkEl.setAttribute("href", recipe.meals[0].strSource);
+                recipeLinkEl.setAttribute("target", "_blank");
+        })});
         recipeNameEl.textContent = recipeName;
         recipeImageEl.src = recipeImage;
         
@@ -76,9 +88,17 @@ let displayRecipeAlt = function(data, ingredient, i) {
         nextSlide();
     
     } else if (i < 0 && -i <= data.meals.length) {
+        let mealDBDetails = "https://themealdb.com/api/json/v1/1/lookup.php?i=" + data.meals[data.meals.length + i].idMeal;
+
         let recipeName = data.meals[data.meals.length + i].strMeal;
         let recipeImage = data.meals[data.meals.length + i].strMealThumb;
-    
+// Performs an additional request from themealdb to load the recipe's source url  
+        fetch(mealDBDetails).then(function(response) {
+            response.json().then(function(recipe) {
+                recipeLinkEl.setAttribute("href", recipe.meals[0].strSource);
+                recipeLinkEl.setAttribute("target", "_blank");
+        })});
+
         recipeNameEl.textContent = recipeName;
         recipeImageEl.src = recipeImage;
     
@@ -111,7 +131,7 @@ let backSlide = function() {
 nextSlideEl.addEventListener("click", nextSlide);
 backSlideEl.addEventListener("click", backSlide);
 
-// 
+// If there aren't yet recipes saved to local storage, this function initializes the array. Otherwise, it simply pushes the new item to the array.
 let addFavorite = function() {
     if (localStorage.getItem("favoriteRecipes") === null) {
         let favoriteRecipes = [];
@@ -126,12 +146,17 @@ let addFavorite = function() {
     }
 };
 
+// Launches addFavorite() function
 favoriteEl.addEventListener("click", addFavorite);
 
 let displayFavoriteRecipes = function(event) {
     event.preventDefault();
-    let oldRecipes = JSON.parse(localStorage.getItem("favoriteRecipes"));
+    document.querySelector(".form-container").classList.add("hide");
+    document.querySelector(".slideshow-container").classList.add("hide");
     document.querySelector(".favorites-container").classList.remove("hide");
+    
+    let oldRecipes = JSON.parse(localStorage.getItem("favoriteRecipes"));
+    
     for (i = 0; i < oldRecipes.length; i++) {
         let recipeItem = document.createElement("li");
         recipeItem.textContent = oldRecipes[i];
@@ -140,3 +165,11 @@ let displayFavoriteRecipes = function(event) {
 };
 
 myRecipesEl.addEventListener("click", displayFavoriteRecipes);
+
+let launchSearch = function(event) {
+    event.preventDefault();
+    document.querySelector(".form-container").classList.remove("hide");
+    document.querySelector(".favorites-container").classList.add("hide");
+}
+
+homepageEl.addEventListener("click", launchSearch);
