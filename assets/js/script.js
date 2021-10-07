@@ -8,6 +8,7 @@ let nextSlideEl = document.getElementById("next-btn");
 let backSlideEl = document.getElementById("previous-btn");
 let favoriteEl = document.getElementById("favorite-btn");
 let myRecipesEl = document.getElementById("my-recipes");
+let recipeLinkEl = document.querySelector(".view-btn");
 
 // Takes in user search term
 let formSubmitHandler = function(event) {
@@ -41,9 +42,12 @@ let getRecipes = function(ingredient) {
 let displayRecipe = function(data, ingredient, i) {
     let recipeName = data.hits[i].recipe.label;
     let recipeImage = data.hits[i].recipe.image;
-    
+    let recipeLink = data.hits[i].recipe.url;
+
     recipeNameEl.textContent = recipeName;
     recipeImageEl.src = recipeImage;
+    recipeLinkEl.setAttribute("href", recipeLink);
+    recipeLinkEl.setAttribute("target", "_blank");
     document.querySelector(".slideshow-container").classList.remove("hide");
 };
 
@@ -64,10 +68,17 @@ let getRecipesAlt = function(ingredient) {
 
 // displays our second api results in a continuous loop with our first api results
 let displayRecipeAlt = function(data, ingredient, i) {
+
     if (i >= 0 && i < data.meals.length) {
+        let mealDBDetails = "https://themealdb.com/api/json/v1/1/lookup.php?i=" + data.meals[i].idMeal;
         let recipeName = data.meals[i].strMeal;
         let recipeImage = data.meals[i].strMealThumb;
     
+        fetch(mealDBDetails).then(function(response) {
+            response.json().then(function(recipe) {
+                recipeLinkEl.setAttribute("href", recipe.meals[0].strSource);
+                recipeLinkEl.setAttribute("target", "_blank");
+        })});
         recipeNameEl.textContent = recipeName;
         recipeImageEl.src = recipeImage;
         
@@ -76,9 +87,17 @@ let displayRecipeAlt = function(data, ingredient, i) {
         nextSlide();
     
     } else if (i < 0 && -i <= data.meals.length) {
+        let mealDBDetails = "https://themealdb.com/api/json/v1/1/lookup.php?i=" + data.meals[data.meals.length + i].idMeal;
+
         let recipeName = data.meals[data.meals.length + i].strMeal;
         let recipeImage = data.meals[data.meals.length + i].strMealThumb;
     
+        fetch(mealDBDetails).then(function(response) {
+            response.json().then(function(recipe) {
+                recipeLinkEl.setAttribute("href", recipe.meals[0].strSource);
+                recipeLinkEl.setAttribute("target", "_blank");
+        })});
+
         recipeNameEl.textContent = recipeName;
         recipeImageEl.src = recipeImage;
     
