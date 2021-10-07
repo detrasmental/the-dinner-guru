@@ -28,30 +28,30 @@
         </div>
       </div>
       </nav>
-   
+    </header>
 
-    
-      <body>
     <!-- starting input container -->
     <section>
-    <div class="form-container" id="user-form">
-      <h1 class="ingredient-input">Let's Eat</h1>
-      <form>
-        <input type="text" name="ingredient-input" id="ingredient-input" placeholder="    Search Ingredient...">
-        <button class="button is-primary is-outlined is-medium is-fullwidth" type="submit" id="submit-btn">Get Cooking!</button>
-    </form>
-  
+      <div class="form-container" id="user-form">
+        <h1 class="ingredient-input">Let's Eat</h1>
+        <form>
+          <input type="text" name="ingredient-input" id="ingredient-input" placeholder="    Search Ingredient...">
+          <button class="button is-primary is-outlined is-medium is-fullwidth" type="submit" id="submit-btn">Get Cooking!</button>
+        </form>
+      </div>
+    </section>
   
     <!-- slideshow container-->
     <div class="slideshow-container hide">
       <div class="img-card" id="img-card">
         <img id="slideshow-img" src="https://www.placecage.com/200/300" style="width: 100%" alt="photo of recipe from original site">
         <div class="flex-container">
-        <h1 class="card-title" id="card-title">This is a recipe</h1>
-        <a class="view-btn" href="#">View Recipe</a>
-       </div>
-       <p class="item-data">Calories: 120</p>
-       </div>
+          <h1 class="card-title" id="card-title">This is a recipe</h1>
+          <a class="view-btn" href="#">View Recipe</a>
+        </div>
+      </div>
+    
+
         <!-- Next and previous buttons -->
         <div class="button">
           <button class="button is-info is-outlined is-normal  previous-btn" id="previous-btn">Previous</button>
@@ -60,20 +60,15 @@
           </button>
           <button class="button is-success is-outlined is-normal next-btn" id="next-btn">Next</button>
         </div>
-  
-
-
-       
-    </main>
 
     <!-- favorite recipes container -->
-    <main class="favorites-container hide">
+    <div class="favorites-container hide">
       <div class="recipes">
         <ul class="recipes-list">
           
         </ul>
       </div>
-    </main>
+    </div>
 
     <footer class="footer">
       <div class="content has-text-centered">
@@ -85,7 +80,6 @@
 
     <script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"></script>
     <script src="./assets/js/script.js"></script>
-  </section>
   </body>
 </html>
       
