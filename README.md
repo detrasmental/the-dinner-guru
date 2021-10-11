@@ -21,9 +21,9 @@ WHEN I view the structure of the web application <br />
 THEN I find that at least 2 server-side APIs. <br />
 
 ## Screenshot/Demo
-[application screenshot]
+![](./assets/images/dinner-guru-screenshot.png)
 
 ## Links
 github: https://github.com/detrasmental/the-dinner-guru <br />
 
-live page: [live link]
+live page: https://detrasmental.github.io/the-dinner-guru/
