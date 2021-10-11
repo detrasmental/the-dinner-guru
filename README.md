@@ -26,4 +26,4 @@ THEN I find that at least 2 server-side APIs. <br />
 ## Links
 github: https://github.com/detrasmental/the-dinner-guru <br />
 
-live page: [live link]
+live page: https://detrasmental.github.io/the-dinner-guru/
