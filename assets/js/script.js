@@ -163,6 +163,8 @@ favoriteEl.addEventListener("click", addFavorite);
 
 let displayFavoriteRecipes = function(event) {
     event.preventDefault();
+    let recipesListEl = document.querySelector(".recipes-list");
+    recipesListEl.textContent = "";
     document.querySelector(".form-container").classList.add("hide");
     document.querySelector(".slideshow-container").classList.add("hide");
     document.querySelector(".favorites-container").classList.remove("hide");
