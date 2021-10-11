@@ -135,14 +135,26 @@ backSlideEl.addEventListener("click", backSlide);
 let addFavorite = function() {
     if (localStorage.getItem("favoriteRecipes") === null) {
         let favoriteRecipes = [];
+        let favoriteRecipesSource = [];
         favoriteRecipes[0] = recipeNameEl.textContent;
+        favoriteRecipesSource[0] = recipeLinkEl.href;
         localStorage.setItem("favoriteRecipes", JSON.stringify(favoriteRecipes));
+        localStorage.setItem("favoriteRecipesSource", JSON.stringify(favoriteRecipesSource));
     }
     else {
         let oldRecipes = JSON.parse(localStorage.getItem("favoriteRecipes"));
+        let oldRecipesSource = JSON.parse(localStorage.getItem("favoriteRecipesSource"));
         let newRecipe = recipeNameEl.textContent;
+        let newRecipeSource = recipeLinkEl.href;
+        for (var i = 0; i < oldRecipes.length; i++) {
+            if (newRecipe === oldRecipes[i]) {
+                return null;
+            }
+        };
         oldRecipes.push(newRecipe);
+        oldRecipesSource.push(newRecipeSource);
         localStorage.setItem("favoriteRecipes", JSON.stringify(oldRecipes));
+        localStorage.setItem("favoriteRecipesSource", JSON.stringify(oldRecipesSource));
     }
 };
 
@@ -156,10 +168,11 @@ let displayFavoriteRecipes = function(event) {
     document.querySelector(".favorites-container").classList.remove("hide");
     
     let oldRecipes = JSON.parse(localStorage.getItem("favoriteRecipes"));
+    let oldRecipesSource = JSON.parse(localStorage.getItem("favoriteRecipesSource"));
     
     for (i = 0; i < oldRecipes.length; i++) {
         let recipeItem = document.createElement("li");
-        recipeItem.textContent = oldRecipes[i];
+        recipeItem.innerHTML = '<a href="' + oldRecipesSource[i] + '" target="_blank">' + oldRecipes[i] + '</a>';
         document.querySelector(".recipes-list").appendChild(recipeItem);
     }
 };
@@ -170,6 +183,8 @@ let launchSearch = function(event) {
     event.preventDefault();
     document.querySelector(".form-container").classList.remove("hide");
     document.querySelector(".favorites-container").classList.add("hide");
+    let recipesListEl = document.querySelector(".recipes-list");
+    recipesListEl.textContent = "";
 }
 
 homepageEl.addEventListener("click", launchSearch);
